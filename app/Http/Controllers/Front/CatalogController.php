@@ -13,8 +13,8 @@ class CatalogController extends Controller
         // Ambil semua data brand dari database
         $brands = Brand::all();
 
-        // Ambil semua data items (mobil) yang sudah terhubung dengan brand
-        $items = Item::with('brand')->get();
+        // Ambil semua data items (mobil) yang sudah terhubung dengan brand dan type
+        $items = Item::with(['brand', 'type'])->get();
 
         return view('catalog', compact('brands', 'items'));
     }
